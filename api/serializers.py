@@ -40,7 +40,14 @@ class AccountSerializer(serializers.ModelSerializer):
         model = Account
         fields = ('__all__')
 
+class AccountDetailSerializer(serializers.ModelSerializer):
+    client = ClientSerializer()
+    bank = BankSerializer()
+    balance = serializers.DecimalField(max_digits = 12, decimal_places = 2)
 
+    class Meta:
+        model = Account
+        fields = ['client', 'bank', 'balance', 'open_date', 'account_type', 'bank']
 
 class TransferSerializer(serializers.ModelSerializer):
     class Meta:

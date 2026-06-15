@@ -6,7 +6,10 @@ from .views import (
     BanksAPIView,
     BankDetailAPIView,
     CreateAccountAPIView,
-    AccountListAPIView
+    AccountListAPIView,
+    DepositAPIView,
+    WithdrawAPIView,
+    AccountDetailAPIView
 )
 
 urlpatterns = [
@@ -15,5 +18,8 @@ urlpatterns = [
     path('banks', BanksAPIView.as_view(), name='banks'),
     path('bank/(?P<pk>[0-9]+)/', BankDetailAPIView.as_view(), name='bank-detail'),
     path('create_account/', CreateAccountAPIView.as_view(), name='create-account'),
-    path('ccounts/', AccountListAPIView.as_view(), name='accounts'),
+    path('accounts/', AccountListAPIView.as_view(), name='accounts'),
+    path('deposits/', DepositAPIView.as_view(), name='deposits'),
+    path('withdrawals/', WithdrawAPIView.as_view(), name='withdrawals'),
+    path('account/<int:pk>/', AccountDetailAPIView.as_view(), name='account-detail'),
 ]
